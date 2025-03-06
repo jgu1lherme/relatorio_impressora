@@ -5,12 +5,17 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.edge.options import Options
 import time
+import os
 
 PATH = "C:\\Users\\joao.guilherme.ALTERNATIVA1\\Downloads\\edgedriver_win64\\msedgedriver.exe"
 
 options = Options()
 options.add_argument("--ignore-certificate-errors")
 options.add_argument("--incognito")
+
+# Criar um diretório temporário para evitar conflitos
+user_data_dir = os.path.join(os.getcwd(), "selenium_profile")
+options.add_argument(f"--user-data-dir={user_data_dir}")
 
 service = Service(executable_path=PATH)
 
